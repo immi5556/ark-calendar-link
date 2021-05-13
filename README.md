@@ -15,7 +15,7 @@ Browser usage:
 <script src="https://cdn.jsdelivr.net/npm/ark-js-log@latest/ark-log.js"></script>
 ```
 
- ####Demo link [Demo Link](https://immi5556.github.io/ark-calendar-link/ "Demo Link")
+[Demo Link](https://immi5556.github.io/ark-calendar-link/ "Demo Link")
 
 
-####developed by:  [Immanuel](https://immi5556.github.io/ark-calendar-link/ "Immanuel")
+##developed by:  [Immanuel](https://immi5556.github.io/ark-calendar-link/ "Immanuel")
