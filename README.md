@@ -7,7 +7,7 @@ Simple add calendar link generator
 ## Install
 
 ```bash
-npm install --save ark-react-log
+npm i ark-js-calendar-link --save
 ```
 
 Browser usage:
