@@ -60,7 +60,7 @@ https://calendar.yahoo.com/?v=60&title=fsdfsd&desc=asdasd&in_loc=dfasd&dur=allda
 
 url: https://www.npmjs.com/package/gh-pages
 
-	> npm install gh-pages --save-dev
+	> npm install gh-pages --save-dev (or install global)
 
 	add below in package.json
 
@@ -69,3 +69,7 @@ url: https://www.npmjs.com/package/gh-pages
 		}
 
 	> npm run deploy
+
+	> gh-pages -d dist -b gh-pages
+
+demo gh-page: https://immi5556.github.io/ark-calendar-link/
