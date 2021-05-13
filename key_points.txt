@@ -1,0 +1,71 @@
+
+react lib:
+  https://www.npmjs.com/package/create-react-library
+
+  create library:
+  > npx create-react-library
+
+  to deploy github pages
+  > npm run deploy
+
+  https://immi5556.github.io/ark-react-config/
+
+
+to publish to npm
+> npm publish
+
+
+----------- add events
+
+---outlook:
+
+Encoded full url: https://outlook.office.com/calendar/0/deeplink/compose?body=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&enddt=2022-01-12T20%3A00%3A00%2B00%3A00&location=New%20Earth&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2022-01-12T18%3A00%3A00%2B00%3A00&subject=Welcome%20to%20the%20Motorway
+
+Decooded: details below
+https://outlook.office.com/calendar/0/deeplink/compose?body=Learn all about the rules of the Motorway and how to access the fast lane.
+
+https://en.wikipedia.org/wiki/Gridlock_(Doctor_Who)&enddt=2022-01-12T20:00:00+00:00&location=New Earth&path=/calendar/action/compose&rru=addevent&startdt=2022-01-12T18:00:00+00:00&subject=Welcome to the Motorway
+
+---gmail
+
+http://www.google.com/calendar/event?action=TEMPLATE&dates=20210506T011000Z%2F20210519T032000Z&text=fsdfsd&location=http%3A%2F%2Flocalhost%3A8032%2Findex.html&details=long%0A%0Aword%0A%0Addd
+
+
+http://www.google.com/calendar/event?action=TEMPLATE&dates=20210506T011000Z/20210519T032000Z&text=fsdfsd&location=http://localhost:8032/index.html&details=long
+
+word
+
+ddd
+
+
+https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220112T180000Z%2F20220112T200000Z&details=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&location=New%20Earth&text=Welcome%20to%20the%20Motorway
+
+https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220112T180000Z/20220112T200000Z&details=Learn all about the rules of the Motorway and how to access the fast lane.
+
+https://en.wikipedia.org/wiki/Gridlock_(Doctor_Who)&location=New Earth&text=Welcome to the Motorway
+
+
+---yahoo--
+
+https://calendar.yahoo.com/?v=60&title=fsdfsd&desc=asdasd&in_loc=dfasd&st=20210513T184123&dur=0533
+
+https://calendar.yahoo.com/?v=60&title=fsdfsd&desc=asdasd&in_loc=dfasd&dur=allday&st=20210513
+
+https://calendar.yahoo.com/?v=60&title=fsdfsd&desc=asdasd&in_loc=dfasd&dur=allday&st=20210513&RPAT=01Dy&REND=20210515
+
+https://calendar.yahoo.com/?v=60&title=fsdfsd&desc=asdasd&in_loc=dfasd&dur=allday&st=20210513&RPAT=01Dy&REND=20210515
+
+
+-------git pages deploy 
+
+url: https://www.npmjs.com/package/gh-pages
+
+	> npm install gh-pages --save-dev
+
+	add below in package.json
+
+	"scripts": {
+		  "deploy": "gh-pages -d dist"
+		}
+
+	> npm run deploy

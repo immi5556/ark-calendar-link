@@ -1,0 +1,152 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Calendar Deep Link Generator</title>
+    <link href="./content/site.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ark-js-log@1.0.1/ark-log.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ark-js-calendar-link@latest/ark-calendar-link.js"></script>
+</head>
+<body>
+    <header>
+        <h1><i class="fa fa-cloud"></i> Calendar Invite <span>Deep Link Generator</span> <i class="fa fa-cloud"></i></h1>
+        <p>Supported email clients -> gmail, outlook, yahoo, office 365</p>
+        <h3>Connect me <i class="fa fa-link"></i> <a href="mailto:raj@immanuel.co" target="_blank">  Immanuel</a></h3>
+    </header>
+    <form>
+        <!--  General -->
+        <div class="form-group">
+            <h2 class="heading">Meeting Details</h2>
+            <div class="controls">
+                <input type="text" id="title" class="floatLabel" name="title">
+                <label for="title">Title <span style="color:red;">*</span></label>
+            </div>
+            <div class="controls">
+                <input type="email" id="email" class="floatLabel" name="email">
+                <label for="email">Participants (Email) <span style="color:red;">*</span></label>
+            </div>
+            <div class="controls">
+                <input type="email" id="partemail" class="floatLabel" name="partemail">
+                <label for="partemail">Optional Participants (Email)</label>
+            </div>
+        </div>
+        <!--  Dates -->
+        <div class="form-group">
+            <h2 class="heading">Starts At (Local Time)</h2>
+            <div class="controls">
+                <input type="datetime-local" id="startdt" class="floatLabel defa-hdr" name="startdt">
+                <label for="startdt" class="active">Start At <span style="color:red;">*</span></label>
+            </div>
+            <div class="controls">
+                <input type="datetime-local" id="enddt" class="floatLabel defa-hdr" name="enddt">
+                <label for="enddt" class="active">End At <span style="color:red;">*</span></label>
+            </div>
+        </div>
+        <!--  Content -->
+        <div class="form-group">
+            <h2 class="heading">Content</h2>
+            <div class="controls">
+                <textarea name="content" class="floatLabel" id="content"></textarea>
+                <label for="comments">Content (Agenda)</label>
+            </div>
+            <div class="controls">
+                <input type="text" id="location" class="floatLabel" name="location">
+                <label for="location" class="active">Location</label>
+            </div>
+        </div>
+        <!--  Link Generator -->
+        <div class="form-group">
+            <h2 class="heading" style="display:none;">Link Generator</h2>
+            <div class="controls" >
+                <i class="fa fa-sort" style="display:none;"></i>
+                <select id="sel-link" class="floatLabel" multiple style="height:110px;overflow:hidden;display:none;">
+                    <option value="gmail">Gmail</option>
+                    <option value="outlook">Outlook</option>
+                    <option value="o365">Office365</option>
+                    <option value="yahoo">Yahoo</option>
+                </select>
+                <label style="display:none;" for="fruit" class="active">Generate Links For ('ctrl' + 'Click' - multiple selection)</label>
+                <button id="gen-link">Generate</button>
+            </div>
+        </div>
+    </form>
+    <div class="rest-diag" style="position:fixed;top: 0px; width:100%;left:0px;text-align:center;">
+        <div class="aler-contai" style="width:100%;overflow:hidden;text-align:center;background-color:#FFB74D;height:220px;padding: 40px;z-index:9999;position:relative;">
+            <p class="inputWithIcon"> Outlook: 
+                <input class="outlook-url" type="text" style="width:75%;height:37px;" placeholder="Outlook Deep Link...">
+                <i class="fa fa-link fa-lg fa-fw" aria-hidden="true"></i>
+                <button class="outlook-copy copy-content" style="height: 37px;width:70px;">Copy</button>
+            </p> <br />
+            <p class="inputWithIcon"> Gmail &nbsp; : 
+                <input class="gmail-url" type="text" style="width:75%;height:37px;" placeholder="Gmail Calendar Deep Link...">
+                <i class="fa fa-link fa-lg fa-fw" aria-hidden="true"></i>
+                <button class="gmail-copy copy-content" style="height: 37px;width:70px;">Copy</button>
+            </p><br />
+                <p class="inputWithIcon">Yahoo &nbsp; :
+                    <input class="yahoo-url" type="text" style="width:75%;height:37px;" placeholder="Yahoo Calendar Deep Link...">
+                    <i class="fa fa-link fa-lg fa-fw" aria-hidden="true"></i>
+                    <button class="yahoo-copy copy-content" style="height: 37px;width:70px;">Copy</button>
+                </p> 
+            <span class="rest-close" onclick="clsdiag()" style="position:absolute;right: 3px; top: 3px;cursor:pointer;">
+                X
+            </span>
+        </div>
+    </div>
+    <script>
+        var clsdiag = (evt) => {
+            $(".rest-diag").hide();
+        }
+        $(".copy-content").each((idx, t) => {
+            $(t).on('click', (evt) => {
+                var inp = $(t).closest('.inputWithIcon').find('input');
+                inp.addClass('copied-done');
+                inp.select();
+                document.execCommand("copy");
+                setTimeout(() => inp.removeClass('copied-done'), 3000);
+            });
+        });
+        (function ($) {
+            function floatLabel(inputType) {
+                $(inputType).each(function () {
+                    var $this = $(this);
+                    // on focus add cladd active to label
+                    $this.focus(function () {
+                        $this.next().addClass("active");
+                    });
+                    //on blur check field and remove class if needed
+                    $this.blur(function () {
+                        if ($this.val() === '' || $this.val() === 'blank') {
+                            if (!$this.hasClass('defa-hdr')) $this.next().removeClass();
+                        }
+                    });
+                });
+            }
+            // just add a class of "floatLabel to the input field!"
+            floatLabel(".floatLabel");
+        })(jQuery);
+        var titl = document.getElementById("title");
+        var part_email = document.getElementById("email");
+        var opt_part_email = document.getElementById("partemail");
+        var stdt = document.getElementById("startdt");
+        var endt = document.getElementById("enddt");
+        //var selink = $("#sel-link");
+        var cont = $("#content");
+        var loca = $("#location");
+        $("#gen-link").on('click', (evt) => {
+            evt.preventDefault();
+            var msg = '';
+            if (!titl.value) msg += 'Title is Mandatory \n';
+            if (!part_email.value) msg += 'Participant email is Mandatory \n';
+            if (!stdt.value) msg += 'Start Date is Mandatory \n';
+            if (!endt.value) msg += 'End Date is Mandatory \n';
+            //if (!selink.val().length) msg += 'Atleast select one deep link option \n';
+            if (msg) {
+                alert(msg);
+                return false;
+            }
+            arkLink(cont.val(), stdt.value, endt.value, titl.value, loca.val(), part_email.value, opt_part_email.value).outlook();
+            arkLink(cont.val(), stdt.value, endt.value, titl.value, loca.val(), part_email.value, opt_part_email.value).gmail();
+            arkLink(cont.val(), stdt.value, endt.value, titl.value, loca.val(), part_email.value, opt_part_email.value).yahoo();
+        });
+    </script>
+</body>
+</html>

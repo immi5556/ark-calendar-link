@@ -1,0 +1,27 @@
+{
+  "name": "ark-js-calendar-link",
+  "version": "1.0.1",
+  "description": "SImple library to generate add to calendar link",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immi5556/ark-calendar-link.git"
+  },
+  "keywords": [
+    "add",
+    "to",
+    "calendar",
+    "link",
+    "Immanuel",
+    "developer"
+  ],
+  "author": "Immanuel Developer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/immi5556/ark-calendar-link/issues"
+  },
+  "homepage": "https://github.com/immi5556/ark-calendar-link#readme"
+}
